@@ -1,7 +1,7 @@
 // Jonathan Eiten - 1stdibs quiz - minimods.js
 // Adds simple modularization to Backbone
 
-(function () {
+(function (api) {
 
 	var modules = {
 
@@ -59,6 +59,6 @@
 	};
 
 	// Interface
-	Backbone.App = app;
+	api.App = app;
 
-})();
+})(Backbone);
