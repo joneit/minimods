@@ -1,1 +1,1 @@
-# minimods
+# mojopo
