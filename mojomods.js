@@ -1,9 +1,9 @@
-// Jonathan Eiten - 1stdibs quiz - minimods.js
+// Jonathan Eiten - mojomods.js
 // Adds simple modularization to Backbone
 
 (function (api) {
 
-	var modules = {
+	var app = {
 
 		util: {
 			// `util.defer` returns a nested object.
@@ -33,32 +33,22 @@
 
 	};
 
-	var moduleSpecs = [];
-
-	var app = {
+	api.App = {
 
 		// Gather all module getters but don't execute them yet
 		module: function(name, get) {
-			moduleSpecs.push({ name: name, get: get });
+			$(function() {
+				var module = app.util.deref(app, name);
+				_.extend(module, get(app, module));
+			});
 		},
 
 		// Execute each module in order, then start the main module
 		start: function(main) {
 			$(function() {
-				_(moduleSpecs).each(function(moduleSpec, index) {
-					var module = modules.util.deref(modules, moduleSpec.name);
-					_.extend(module, moduleSpec.get(modules, module));
- 					delete moduleSpecs[index]; // free up memory as we go
-				});
-
-				moduleSpecs = undefined;
-			
-				main(modules);
+				main(app);
 			});
 		}
 	};
-
-	// Interface
-	api.App = app;
 
 })(Backbone);
