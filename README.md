@@ -36,7 +36,8 @@ Backbone.App.module('form', function(app, mod) {
 			mod.config.fetch('base');
 			...
 		}
-	});
+	};
+});
 ```
 
 `.module()` defines objects to add to the given namespace. Objects may be added explicity, using `mod` as shown in the first declaration above. Alternatively (or additionally), your function may return an object with properties that will then be added to the module implicitly. This example defines both a `.fetch()` method and a `.save()` method in the `form.config` module; and a `render()` method in the `form` namespace.  These can be referenced from any other module through `app` (*e.g.,* `app.form.config.save()`); or from within a dinfining function through `mod` (*e.g.,* `mod.save()`).
