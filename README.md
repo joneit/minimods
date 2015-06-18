@@ -57,7 +57,7 @@ Backbone.App.start(function(app) {
 ### Dependencies
 
 I'm using some **jQuery** and some **Underscore** because I wrote this for use with **Backbone.** However, these dependencies are easily removed. Specifically:
-* Replace `$(handler)`, a.k.a. [`jQuery(handler).ready()`](https://api.jquery.com/ready/), with (perhaps) [`window.onload()`](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload).
+* Replace `$(handler)`, a.k.a. [`jQuery(document).ready(handler)`](https://api.jquery.com/ready/), with (perhaps) [`window.onload(handler)`](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload).
 * Replace [`_.extend(a, b)`](http://underscorejs.org/#extend) with a simple [`for...in`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) loop:
 
 ```javascript
@@ -65,3 +65,6 @@ for (var prop in b)
 	if (b.hasOwnProperty(prop))
 		a[prop] = b[prop];
 ```
+## mojoprom
+
+Simple deferreds/promises API that works very similarly to [jQuery's deferred object](https://api.jquery.com/category/deferred-object/).
